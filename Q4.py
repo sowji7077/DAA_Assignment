@@ -1,28 +1,9 @@
-def find_factors(n):
-    factors = []
-    for i in range(1, n + 1):
-        if n % i == 0:
-            factors.append(i)
-    return factors
-
-
-def main():
-    
-    try:
-        num = int(input("Enter a positive integer: "))
-        
-       
-        if num <= 0:
-            print("Please enter a positive integer.")
-        else:
-
-            factors = find_factors(num)
-            
-            
-            print(f"The factors of {num} are: {factors}")
-    except ValueError:
-        print("Please enter a valid integer.")
-
-
-if __name__ == "__main__":
-    main()
+class Solution:
+    def average(self, salary: list[int]) -> float:
+        min_salary = min(salary)
+        max_salary = max(salary)
+        total_salary = sum(salary)
+        total_salary -= min_salary
+        total_salary -= max_salary
+        n = len(salary) - 2
+        return total_salary / n

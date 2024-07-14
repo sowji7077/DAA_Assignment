@@ -1,11 +1,16 @@
-def countRotations(arr, n): 
-    min = arr[0] 
-    min_index = 0
-    for i in range(0, n): 
-      
-        if (min > arr[i]): 
-          
-            min = arr[i] 
-            min_index = i 
-          
-    return min_index; 
+class Solution:
+    def findErrorNums(self, nums: List[int]) -> List[int]:
+        count = {}
+        for num in nums:
+            if num not in count:
+                count[num] = 1
+            else:
+                count[num] += 1
+        duplicate = None
+        missing = None
+        for i in range(1, len(nums) + 1):
+            if i not in count:
+                missing = i
+            elif count[i] == 2:
+                duplicate = i
+        return [duplicate, missing]

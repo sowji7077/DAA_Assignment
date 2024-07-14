@@ -1,14 +1,25 @@
-def sum_of_natural_numbers(N):
-    return N * (N + 1) // 2
-def main():
-    try:
-        N = int(input("Enter a positive integer N: "))
-        if N <= 0:
-            print("Please enter a positive integer.")
-        else:
-            sum_N = sum_of_natural_numbers(N)
-            print(f"The sum of the first {N} natural numbers is {sum_N}.")
-    except ValueError:
-        print("Please enter a valid integer.")
-if __name__ == "__main__":
-    main()
+class Solution:
+    def sortSentence(self, s: str) -> str:
+        words = s.split()
+    
+    # Create a list to store tuples of (word, index)
+        indexed_words = []
+    
+    # Iterate over each word in the shuffled sentence
+        for word in words:
+        # Extract the word and its index
+            actual_word = word[:-1]  # Remove the last character (which is the index)
+            index = int(word[-1])  # Convert the last character to an integer
+        # Append tuple (word, index) to the list
+            indexed_words.append((actual_word, index))
+    
+    # Sort the words based on their indices
+        indexed_words.sort(key=lambda x: x[1])
+    
+    # Extract the words in sorted order
+        original_words = [word[0] for word in indexed_words]
+    
+    # Join the words to form the original sentence
+        original_sentence = " ".join(original_words)
+    
+        return original_sentence

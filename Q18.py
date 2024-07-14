@@ -1,7 +1,10 @@
 class Solution:
-    def arrangeCoins(self, n: int) -> int:
-        k = 1
-        while n >= k:
-            n -= k
-            k += 1
-        return k - 1
+    def findDuplicates(self, nums: List[int]) -> List[int]:
+        duplicates = []
+        for num in nums:
+            num = abs(num)
+            if nums[num - 1] < 0:
+                duplicates.append(num)
+            else:
+                nums[num - 1] *= -1
+        return duplicates
