@@ -1,10 +1,12 @@
 class Solution:
-    def findDuplicates(self, nums: List[int]) -> List[int]:
-        duplicates = []
-        for num in nums:
-            num = abs(num)
-            if nums[num - 1] < 0:
-                duplicates.append(num)
-            else:
-                nums[num - 1] *= -1
-        return duplicates
+    def jump(self, nums: List[int]) -> int:
+        jumps = 0
+        curr_end = 0
+        curr_farthest = 0
+        for i in range(len(nums) - 1):
+            if i <= curr_end:
+                curr_farthest = max(curr_farthest, i + nums[i])
+            if i == curr_end:
+                jumps += 1
+                curr_end = curr_farthest
+        return jumps

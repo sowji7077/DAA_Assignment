@@ -1,9 +1,9 @@
-class Solution:
-    def average(self, salary: list[int]) -> float:
-        min_salary = min(salary)
-        max_salary = max(salary)
-        total_salary = sum(salary)
-        total_salary -= min_salary
-        total_salary -= max_salary
-        n = len(salary) - 2
-        return total_salary / n
+def average_waiting_time(bt):
+    n = len(bt)
+    bt.sort()
+    waiting_time = 0
+    total_waiting_time = 0
+    for i in range(n):
+        total_waiting_time += waiting_time
+        waiting_time += bt[i]
+    return total_waiting_time // n

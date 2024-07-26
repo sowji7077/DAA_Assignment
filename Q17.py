@@ -1,15 +1,8 @@
 class Solution:
-    def findDuplicate(self, nums: List[int]) -> int:
-        tortoise = nums[0]
-        hare = nums[0]
-        while True:
-            tortoise = nums[tortoise]
-            hare = nums[nums[hare]]
-            if tortoise == hare:
-                break
-        ptr1 = nums[0]
-        ptr2 = tortoise
-        while ptr1!= ptr2:
-            ptr1 = nums[ptr1]
-            ptr2 = nums[ptr2]
-        return ptr1   
+    def canJump(self, nums: List[int]) -> bool:
+        max_reach = 0
+        for i in range(len(nums)):
+            if i > max_reach:
+                return False
+            max_reach = max(max_reach, i + nums[i])
+        return True

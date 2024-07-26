@@ -1,8 +1,5 @@
-class Solution:
-    def heightChecker(self, heights: List[int]) -> int:
-        expected = sorted(heights)
-        count = 0
-        for i in range(len(heights)):
-            if heights[i] != expected[i]:
-                count += 1
-        return count
+def candy_store(prices, N, K):
+    prices.sort()
+    min_cost = prices[-1]
+    max_cost = sum(prices)
+    return min_cost, max_cost

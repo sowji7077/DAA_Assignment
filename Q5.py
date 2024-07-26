@@ -1,10 +1,18 @@
-class Solution:
-    def sortEvenOdd(self, nums: List[int]) -> List[int]:
-        odd = sorted([nums[i] for i in range(1, len(nums), 2)], reverse=True)
-        even = sorted([nums[i] for i in range(0, len(nums), 2)])
-        result = []
-        for i in range(len(even)):
-            result.append(even[i])
-            if i < len(odd):
-                result.append(odd[i])
-        return result
+class Item:
+    def __init__(self, wt, val, ind):
+        self.wt = wt
+        self.val = val
+        self.ind = ind
+        self.vwt = val / wt  
+
+def fractional_knapsack(w, items):
+    items.sort(key=lambda x: x.vwt, reverse=True) 
+    total_value = 0.0
+    for item in items:
+        if item.wt <= w:
+            w -= item.wt
+            total_value += item.val
+        else:
+            total_value += item.val * w / item.wt
+            break
+    return total_value

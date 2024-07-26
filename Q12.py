@@ -1,7 +1,14 @@
 class Solution:
-    def buyChoco(self, prices: List[int], money: int) -> int:
-        prices.sort()
-        for i in range(len(prices) - 1):
-            if prices[i] + prices[i + 1] <= money:
-                return money - prices[i] - prices[i + 1]
-        return money
+    def eraseOverlapIntervals(self, intervals: List[List[int]]) -> int:
+        if not intervals:
+            return 0
+        intervals.sort(key=lambda x: x[1])
+        end = intervals[0][1]
+        count = 0
+        for i in range(1, len(intervals)):
+            if intervals[i][0] < end:
+                count += 1
+            else:
+                end = intervals[i][1]
+        return count
+        

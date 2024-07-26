@@ -1,11 +1,6 @@
-class Solution:
-    def numberGame(self, nums: list[int]) -> List[int]:
-        arr = []
-        while nums:
-            alice_min = min(nums)
-            nums.remove(alice_min)
-            bob_min = min(nums)
-            nums.remove(bob_min)
-            arr.append(bob_min)
-            arr.append(alice_min)
-        return arr
+def min_days_to_survive(N, S, M):
+    total_food_required = S * M
+    if total_food_required > N * (S - 1):
+        return -1  
+    else:
+        return -(-total_food_required // N)  
